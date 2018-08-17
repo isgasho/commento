@@ -5,6 +5,7 @@ stages:
   - build-src
   - build-docker
   - docker-registry
+  - release-docker-registry
 
 check-dco:
   stage: check-dco
@@ -83,3 +84,18 @@ docker-registry:
     - docker pull registry.gitlab.com/commento/commento-ce:latest || true
     - docker build --cache-from registry.gitlab.com/commento/commento-ce:latest --tag registry.gitlab.com/commento/commento-ce:latest .
     - docker push registry.gitlab.com/commento/commento-ce:latest
+
+release-docker-registry:
+  stage: release-docker-registry
+  image: docker:stable
+  services:
+    - docker:dind
+  only:
+    - tags
+    - master@commento/commento-ce
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+  script:
+    - docker pull registry.gitlab.com/commento/commento-ce:latest || true
+    - docker build --cache-from registry.gitlab.com/commento/commento-ce:latest --tag registry.gitlab.com/commento/commento-ce:$(git describe --tags) .
+    - docker push registry.gitlab.com/commento/commento-ce:$(git describe --tags)
