@@ -4,6 +4,14 @@
 
 <p align="center"><b>A bloat-free and privacy-focused discussion platform.</b></p>
 
+<p align="center">
+:warning: :warning: :warning: &nbsp; <b>Note: All development <a href="https://gitlab.com/commento/commento-ce">takes place on GitLab</a>.</b> &nbsp; :warning: :warning: :warning:
+
+You're viewing the GitHub mirror of the `master` branch. All development, however, [takes place on GitLab](https://gitlab.com/commento/commento-ce), not on this repo. Please submit all issues and patches over there. If you're looking for the older, deprecated version, see the [`v0` branch](https://github.com/adtac/commento/tree/v0).
+</p>
+
+<h2 align="center"></h2>
+
 Commento is a discussion platform that you can embed on your blog, news articles, and any place where you want your readers to add comments. Commento is fast, lightweight, and privacy-focused; we'll never sell your data, show ads, embed third-party tracking scripts, or inject affiliate links.
 
 #### Features
